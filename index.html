@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NES 模拟器 - [您的游戏名]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #1a1c22; 
+        }
+        
+        #nes-canvas { 
+            /* NES 原始宽高比约为 1.066:1 (256/240) */
+            width: 80vw; /* 占据视口宽度的 80% */
+            max-width: 800px; /* 最大宽度 */
+            aspect-ratio: 256 / 240; /* 保持正确的 NES 纵横比 */
+            image-rendering: pixelated; /* 保持像素清晰 */
+            border: 8px solid #333;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 适用于较小设备 */
+        @media (max-width: 600px) {
+            #nes-canvas {
+                width: 95vw;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="nes-canvas"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsnes/dest/jsnes.min.js"></script>
+
+    <script>
+        const ROM_PATH = './nesgames/mario.nes'; // ⚠️ 请将 'mario.nes' 替换为您的 ROM 文件名
+        
+        const canvas = document.getElementById('nes-canvas');
+        const ctx = canvas.getContext('2d');
+        const audio = new window.AudioContext();
+        
+        const NES_WIDTH = 256;
+        const NES_HEIGHT = 240;
+
+        // 设置 Canvas 尺寸
+        canvas.width = NES_WIDTH;
+        canvas.height = NES_HEIGHT;
+        
+        let frameBuffer = null;
+        
+        // --- 模拟器核心功能 ---
+        const nes = new JSNES.NES({
+            onFrame: function(frame) {
+                // 绘制每一帧画面
+                frameBuffer = frame;
+                const imageData = new ImageData(new Uint8ClampedArray(frameBuffer), NES_WIDTH, NES_HEIGHT);
+                ctx.putImageData(imageData, 0, 0);
+            },
+            onAudio: function(buffer) {
+                // 这里是 Web Audio API 的复杂部分，为了简化，此处不实现完整音频
+            }
+        });
+
+        // --- 键盘输入映射 (标准 NES 键位) ---
+        const MAPPINGS = {
+            'w': JSNES.Controller.BUTTON_UP,
+            's': JSNES.Controller.BUTTON_DOWN,
+            'a': JSNES.Controller.BUTTON_LEFT,
+            'd': JSNES.Controller.BUTTON_RIGHT,
+            'j': JSNES.Controller.BUTTON_A,      // J -> A 键
+            'k': JSNES.Controller.BUTTON_B,      // K -> B 键
+            ' ': JSNES.Controller.BUTTON_SELECT, // 空格 -> Select
+            'Enter': JSNES.Controller.BUTTON_START // Enter -> Start
+        };
+
+        window.addEventListener('keydown', (e) => {
+            const button = MAPPINGS[e.key];
+            if (button !== undefined) {
+                nes.getController(1).setButtonState(button, true);
+                e.preventDefault(); // 阻止浏览器默认行为，如滚动
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            const button = MAPPINGS[e.key];
+            if (button !== undefined) {
+                nes.getController(1).setButtonState(button, false);
+                e.preventDefault();
+            }
+        });
+
+        // --- ROM 文件加载 ---
+        fetch(ROM_PATH)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load ROM: ' + response.statusText);
+                }
+                return response.arrayBuffer();
+            })
+            .then(buffer => {
+                const romData = new Uint8Array(buffer);
+                nes.loadROM(romData);
+                nes.start();
+                console.log("NES 模拟器已启动。请按 W/A/S/D 和 J/K 键控制游戏。");
+            })
+            .catch(error => {
+                console.error("加载 ROM 文件失败，请检查路径和文件名是否正确:", error);
+                ctx.fillStyle = 'red';
+                ctx.font = '10px Arial';
+                ctx.fillText("Error: " + error.message, 10, 10);
+            });
+            
+    </script>
+</body>
+</html>
