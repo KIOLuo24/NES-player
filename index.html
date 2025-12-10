@@ -57,7 +57,7 @@
         canvas.height = NES_HEIGHT;
         
         // --- 模拟器核心功能 ---
-        const nes = new JSNES.NES({
+        const nes = new jsnes.NES({
             onFrame: function(frameBuffer) {
                 // 绘制每一帧画面
                 const imageData = new ImageData(new Uint8ClampedArray(frameBuffer), NES_WIDTH, NES_HEIGHT);
@@ -68,14 +68,14 @@
 
         // --- 键盘输入映射 (标准 NES 键位) ---
         const MAPPINGS = {
-            'w': JSNES.Controller.BUTTON_UP,
-            's': JSNES.Controller.BUTTON_DOWN,
-            'a': JSNES.Controller.BUTTON_LEFT,
-            'd': JSNES.Controller.BUTTON_RIGHT,
-            'j': JSNES.Controller.BUTTON_A,      // J -> A 键 (俄罗斯方块中的旋转或操作)
-            'k': JSNES.Controller.BUTTON_B,      // K -> B 键 (另一个操作键)
-            ' ': JSNES.Controller.BUTTON_SELECT, // 空格 -> Select
-            'Enter': JSNES.Controller.BUTTON_START // Enter -> Start
+            'w': jsnes.Controller.BUTTON_UP,
+            's': jsnes.Controller.BUTTON_DOWN,
+            'a': jsnes.Controller.BUTTON_LEFT,
+            'd': jsnes.Controller.BUTTON_RIGHT,
+            'j': jsnes.Controller.BUTTON_A,      // J -> A 键 (俄罗斯方块中的旋转或操作)
+            'k': jsnes.Controller.BUTTON_B,      // K -> B 键 (另一个操作键)
+            ' ': jsnes.Controller.BUTTON_SELECT, // 空格 -> Select
+            'Enter': jsnes.Controller.BUTTON_START // Enter -> Start
         };
 
         // 绑定键盘事件
@@ -124,6 +124,7 @@
     </script>
 </body>
 </html>
+
 
 
 
