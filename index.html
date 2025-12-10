@@ -40,11 +40,11 @@
 
     <canvas id="nes-canvas" tabindex="0" title="点击并按键盘操作"></canvas>
 
-    <script src="./jsnes.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
 
     <script>
         // ⚠️ ROM 文件路径：指向您的 /tetris.nes 文件
-        const ROM_PATH = './Tetris (USA).nes'; 
+        const ROM_PATH = './tetris.nes'; 
         
         const canvas = document.getElementById('nes-canvas');
         const ctx = canvas.getContext('2d');
@@ -57,7 +57,7 @@
         canvas.height = NES_HEIGHT;
         
         // --- 模拟器核心功能 ---
-        const nes = new jsnes.NES({
+        const nes = new JSNES.NES({
             onFrame: function(frameBuffer) {
                 // 绘制每一帧画面
                 const imageData = new ImageData(new Uint8ClampedArray(frameBuffer), NES_WIDTH, NES_HEIGHT);
@@ -68,14 +68,14 @@
 
         // --- 键盘输入映射 (标准 NES 键位) ---
         const MAPPINGS = {
-            'w': jsnes.Controller.BUTTON_UP,
-            's': jsnes.Controller.BUTTON_DOWN,
-            'a': jsnes.Controller.BUTTON_LEFT,
-            'd': jsnes.Controller.BUTTON_RIGHT,
-            'j': jsnes.Controller.BUTTON_A,      // J -> A 键 (俄罗斯方块中的旋转或操作)
-            'k': jsnes.Controller.BUTTON_B,      // K -> B 键 (另一个操作键)
-            ' ': jsnes.Controller.BUTTON_SELECT, // 空格 -> Select
-            'Enter': jsnes.Controller.BUTTON_START // Enter -> Start
+            'w': JSNES.Controller.BUTTON_UP,
+        's': JSNES.Controller.BUTTON_DOWN,
+        'a': JSNES.Controller.BUTTON_LEFT,
+        'd': JSNES.Controller.BUTTON_RIGHT,
+        'j': JSNES.Controller.BUTTON_A,
+        'k': JSNES.Controller.BUTTON_B,
+        ' ': JSNES.Controller.BUTTON_SELECT,
+        'Enter': JSNES.Controller.BUTTON_START
         };
 
         // 绑定键盘事件
@@ -124,11 +124,4 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
