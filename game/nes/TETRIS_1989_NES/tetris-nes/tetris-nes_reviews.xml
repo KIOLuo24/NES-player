@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reviews itemIdentifier="tetris-nes">
+  <review>
+    <reviewtitle>very good</reviewtitle>
+    <reviewbody>it works pretty well and i have a lot of fun while playing it, trying to get a higher score every time that i play.</reviewbody>
+    <stars>5</stars>
+    <reviewer>Terminal5287</reviewer>
+    <reviewdate>2024-02-13 13:31:03</reviewdate>
+    <createdate>2024-02-13 13:31:03</createdate>
+    <reviewer_itemname>@terminal5287</reviewer_itemname>
+  </review>
+  <review>
+    <reviewtitle>Cant figure out how to play</reviewtitle>
+    <reviewbody>I can't figure out how to play the game instead it just keeps auto-playing for me if anybody knows please tell me.</reviewbody>
+    <stars>5</stars>
+    <reviewer>Galagageek1981</reviewer>
+    <reviewdate>2024-02-14 01:25:34</reviewdate>
+    <createdate>2024-02-14 01:25:34</createdate>
+    <reviewer_itemname>@galagageek1981</reviewer_itemname>
+  </review>
+  <review>
+    <reviewtitle>How to Play</reviewtitle>
+    <reviewbody>Press "1" to confirm/start and "p" to pause.
+
+"Ctrl and alt" rotates the pieces.
+"Arrow keys" moves the pieces and will also used to select things in the menu.
+
+I like to press "tab" and change the controls so instead of "ctrl and alt" it is "z and x".</reviewbody>
+    <stars>4</stars>
+    <reviewer>Carter Gray</reviewer>
+    <reviewdate>2024-02-15 15:18:04</reviewdate>
+    <createdate>2024-02-15 15:08:29</createdate>
+    <reviewer_itemname>@carter_gray</reviewer_itemname>
+  </review>
+  <review>
+    <reviewtitle>Fuck everything</reviewtitle>
+    <reviewbody>perfect game to distract yourself from the cruelty of life. I miss her so much.
+
+update: SHE CAME BACK GANG</reviewbody>
+    <stars>5</stars>
+    <reviewer>RealSeedy</reviewer>
+    <reviewdate>2025-05-05 16:17:10</reviewdate>
+    <createdate>2025-04-04 15:42:51</createdate>
+    <reviewer_itemname>@cloude_derosia</reviewer_itemname>
+  </review>
+  <info>
+    <num_reviews>4</num_reviews>
+    <avg_rating>4.75</avg_rating>
+  </info>
+</reviews>

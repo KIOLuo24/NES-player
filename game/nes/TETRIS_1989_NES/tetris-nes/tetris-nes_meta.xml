@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <identifier>tetris-nes</identifier>
+  <mediatype>software</mediatype>
+  <collection>miscconsoles</collection>
+  <creator>Nintendo</creator>
+  <date>1989-11</date>
+  <description>&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;US version.&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;&lt;b&gt;Controls:&lt;/b&gt;&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Alt = A&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Ctrl = B&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;1 = Start&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;6 = Select&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Up = Up&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Down = Down&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Left = Left&lt;/div&gt;&lt;div style="color:rgb(44,44,44);font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;background-color:rgb(255,255,255);"&gt;Right = Right&lt;/div&gt;</description>
+  <emulator>nes</emulator>
+  <language>eng</language>
+  <scanner>Internet Archive HTML5 Uploader 1.6.4</scanner>
+  <subject>ROM</subject>
+  <title>Tetris</title>
+  <uploader>therealvoid222@gmail.com</uploader>
+  <publicdate>2022-07-12 05:20:22</publicdate>
+  <addeddate>2022-07-12 05:20:22</addeddate>
+  <curation>[curator]validator@archive.org[/curator][date]20220712052046[/date][comment]checked for malware[/comment]</curation>
+  <year>1989</year>
+  <emulator_ext>nes</emulator_ext>
+  <collection>consolelivingroom</collection>
+  <collection>emulation</collection>
+</metadata>
