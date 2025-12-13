@@ -118,25 +118,6 @@
         <canvas id="nesCanvas" width="256" height="240"></canvas>
     </div>
 
-    <div id="controls">
-        <div class="control-section">
-            <input type="file" id="romInput" accept=".nes" style="display: none;">
-            <button id="loadButton" onclick="document.getElementById('romInput').click()">📁 加载游戏ROM</button>
-            <button id="startButton" onclick="startGame()" disabled>▶️ 开始游戏</button>
-            <button id="pauseButton" onclick="pauseGame()" disabled>⏸️ 暂停</button>
-            <button id="resetButton" onclick="resetGame()" disabled>🔄 重置</button>
-        </div>
-
-        <div id="status">请加载游戏ROM文件</div>
-
-        <div class="key-info">
-            <div><strong>🕹️ 操作说明:</strong></div>
-            <div>方向键: ← → ↓ ↑</div>
-            <div>A键: X | B键: Z</div>
-            <div>开始: Enter | 选择: Shift</div>
-        </div>
-    </div>
-
     <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
     <script src="js/nes-emulator.js"></script>
 
