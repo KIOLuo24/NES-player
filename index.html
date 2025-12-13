@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NES游戏模拟器 - 俄罗斯方块</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        #gameContainer {
+            background-color: #000;
+            border: 3px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            width: 30vw; /* 设置为视口宽度的50% */
+        }
+
+        #nesCanvas {
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            border: 2px solid #666;
+            width: 100%; /* 占满容器宽度 */
+            height: auto; /* 高度自适应保持比例 */
+        }
+
+
+        #controls {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #444;
+        }
+
+        .control-section {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+
+        #loadButton {
+            background-color: #2196F3;
+        }
+
+        #loadButton:hover {
+            background-color: #0b7dda;
+        }
+
+        .key-info {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .key-info div {
+            margin: 3px 0;
+        }
+
+        #status {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .error {
+            color: #ff4444;
+            background-color: #3a1a1a;
+        }
+
+        .success {
+            color: #44ff44;
+            background-color: #1a3a1a;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 NES游戏模拟器</h1>
+
+    <div id="gameContainer">
+        <canvas id="nesCanvas" width="256" height="240"></canvas>
+    </div>
+
+    <div id="controls">
+        <div class="control-section">
+            <input type="file" id="romInput" accept=".nes" style="display: none;">
+            <button id="loadButton" onclick="document.getElementById('romInput').click()">📁 加载游戏ROM</button>
+            <button id="startButton" onclick="startGame()" disabled>▶️ 开始游戏</button>
+            <button id="pauseButton" onclick="pauseGame()" disabled>⏸️ 暂停</button>
+            <button id="resetButton" onclick="resetGame()" disabled>🔄 重置</button>
+        </div>
+
+        <div id="status">请加载游戏ROM文件</div>
+
+        <div class="key-info">
+            <div><strong>🕹️ 操作说明:</strong></div>
+            <div>方向键: ← → ↓ ↑</div>
+            <div>A键: X | B键: Z</div>
+            <div>开始: Enter | 选择: Shift</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
+    <script src="js/nes-emulator.js"></script>
+
+    <script>
+        // 自动加载本地游戏
+        window.addEventListener('load', function() {
+            autoLoadLocalGame();
+        });
+    </script>
+</body>
+</html>
