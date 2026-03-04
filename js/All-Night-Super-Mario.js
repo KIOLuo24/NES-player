@@ -399,7 +399,7 @@ class FCSuperMarioEmulator {
 
                 if (pageWidth > pageHeight * 2) {
                     // 宽度大于高度的 2 倍
-                    const newHeight = containerWidth / 3;
+                    const newHeight = containerWidth / 5;
                     canvas.style.height = newHeight + 'px';
                 } else {
                     // 宽度小于等于高度的 2 倍
@@ -580,5 +580,6 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
 
 
