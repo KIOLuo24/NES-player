@@ -389,7 +389,7 @@ class FCSuperMarioEmulator {
         const canvas = this.gameContainer.querySelector('canvas');
         if (canvas) {
             const containerWidth = this.gameContainer.clientWidth;
-            const newHeight = (containerWidth * 100) / 200;
+            const newHeight = (containerWidth * 100) / 180;
             canvas.style.height = newHeight + 'px';
         }
     }
@@ -560,3 +560,4 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
