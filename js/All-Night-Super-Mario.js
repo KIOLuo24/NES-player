@@ -389,8 +389,28 @@ class FCSuperMarioEmulator {
         const canvas = this.gameContainer.querySelector('canvas');
         if (canvas) {
             const containerWidth = this.gameContainer.clientWidth;
-            const newHeight = (containerWidth * 100) / 180;
-            canvas.style.height = newHeight + 'px';
+
+            // 检测是否在全屏状态且获取页面尺寸
+            if (document.fullscreenElement || document.webkitFullscreenElement ||
+                document.mozFullScreenElement || document.msFullscreenElement) {
+                // 全屏模式下，检测页面宽高比
+                const pageWidth = window.innerWidth;
+                const pageHeight = window.innerHeight;
+
+                if (pageWidth > pageHeight * 2) {
+                    // 宽度大于高度的 2 倍
+                    const newHeight = containerWidth / 2;
+                    canvas.style.height = newHeight + 'px';
+                } else {
+                    // 宽度小于等于高度的 2 倍
+                    const newHeight = (containerWidth * 100) / 180;
+                    canvas.style.height = newHeight + 'px';
+                }
+            } else {
+                // 非全屏模式，使用原始公式
+                const newHeight = (containerWidth * 100) / 180;
+                canvas.style.height = newHeight + 'px';
+            }
         }
     }
 
@@ -560,4 +580,3 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
-
