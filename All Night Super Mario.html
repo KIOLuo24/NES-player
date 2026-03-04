@@ -3,29 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NES - tetris</title>
-    <style>:root{--bg-dark:#1a1a1a;--bg-darker:#2a2a2a;--border-color:#333;--btn-green:#4CAF50;--btn-blue:#2196F3;--highlight-red:#ff6b6b;--text-light:#fff;--text-gray:#ccc;--shadow:0 0 20px rgba(0,0,0,.5)}body{margin:0;padding:20px;background-color:var(--bg-dark);color:var(--text-light);font-family:Arial,sans-serif;display:flex;flex-direction:column;align-items:center}#gameContainer{background-color:#000;border:3px solid var(--border-color);border-radius:8px;padding:10px;box-shadow:var(--shadow);width:80%}#nesCanvas{display:block;image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;border:2px solid #666;width:100%;height:auto}#controls{margin-top:20px;text-align:center;background-color:var(--bg-darker);padding:15px;border-radius:8px;border:2px solid #444;display:none}.control-section{margin:10px 0}button{background-color:var(--btn-green);color:var(--text-light);border:none;padding:10px 20px;margin:5px;border-radius:5px;cursor:pointer;font-size:14px}button:hover{background-color:#45a049}button:disabled{background-color:#666;cursor:not-allowed}#loadButton{background-color:var(--btn-blue)}#loadButton:hover{background-color:#0b7dda}#status{margin-top:10px;padding:10px;background-color:#333;border-radius:5px;font-size:14px}.error{color:#ff4444;background-color:#3a1a1a}.success{color:#44ff44;background-color:#1a3a1a}</style>
+    <title>FC - supermario</title>
+    <style>
+        body{margin:0;padding:20px;background: #0c0d14;color:#fff;font-family:Arial;display:flex;flex-direction:column;align-items:center}
+        h1{margin-bottom:20px;color:#ff6b6b}
+        #gameContainer{background:#000;border:3px solid #0c0d14;border-radius:8px;padding:10px;box-shadow:0 0 20px rgb(0, 0, 0);width:80%;max-width:800px;position: relative;}
+        #nesCanvas{display:none}
+        .emulatorjs-canvas{display:block;width:100%;height:auto;border:2px solid #666;image-rendering:pixelated}
+
+        /* 覆盖层样式 */
+        #overlay {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /*justify-content: center;*/
+            align-items: center;
+            background: rgba(0,0,0,0);
+            z-index: 10;
+        }
+
+        #overlayImage {
+            width: 80%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            filter: blur(2px);
+            opacity: 0.8;
+        }
+
+        #playButton {
+            background: #f37500;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        #playButton:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        #overlay p {
+            margin-top: 20px;
+            color: #ccc;
+            text-align: center;
+            max-width: 80%;
+        }
+    </style>
+
+    <!-- EmulatorJS 全局配置 -->
+    <script>
+        window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        window.EJS_player      = '#gameContainer';
+        window.EJS_gameUrl     = 'game/nes/smb/smb.nes';
+        window.EJS_core        = 'nes';
+        window.EJS_gameName    = '超级马里奥';
+        window.EJS_startOnLoaded = true;
+        window.EJS_color       = '#2196F3';
+        window.EJS_buttons     = {
+            "0":{"label":"A","key":"X"},
+            "1":{"label":"B","key":"Z"},
+            "2":{"label":"SELECT","key":"Shift"},
+            "3":{"label":"START","key":"Enter"},
+            "4":{"label":"UP","key":"ArrowUp"},
+            "5":{"label":"DOWN","key":"ArrowDown"},
+            "6":{"label":"LEFT","key":"ArrowLeft"},
+            "7":{"label":"RIGHT","key":"ArrowRight"}
+        };
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 </head>
 <body>
-    <div id="gameContainer">
+    <div id="overlay">
+        <img id="overlayImage" src="game/nes/smb/screenshot_04.png" alt="游戏封面">
+        <button id="playButton">PLAY</button>
+    </div>
+    <div id="gameContainer" style="width: auto;height: auto;position: relative;">
         <canvas id="nesCanvas" width="256" height="240"></canvas>
     </div>
-    <div id="controls">
-        <div class="control-section">
-            <input type="file" id="romInput" accept=".nes" style="display: none;">
-            <button id="loadButton" onclick="document.getElementById('romInput').click()">📁 加载游戏ROM</button>
-            <button id="startButton" onclick="startGame()" disabled>▶️ 开始游戏</button>
-            <button id="pauseButton" onclick="pauseGame()" disabled>⏸️ 暂停</button>
-            <button id="resetButton" onclick="resetGame()" disabled>🔄 重置</button>
-        </div>
-        <div id="status">请加载游戏ROM文件</div>
-    </div>
-    <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
+
     <script src="js/All-Night-Super-Mario.js"></script>
-    <script>
-        window.addEventListener('load',()=>{resizeGame();autoLoadLocalGame()});
-        window.addEventListener('resize',resizeGame);
-        window.addEventListener('beforeunload',()=>emulator?.pause());
-    </script>
 </body>
+<script>document.addEventListener('DOMContentLoaded', function() {
+    const playButton = document.getElementById('playButton');
+    const overlay = document.getElementById('overlay');
+
+    playButton.addEventListener('click', function() {
+        overlay.style.display = 'none';
+    });
+});
+</script>
 </html>
