@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/nes/super marioNES/Super Mario Bros + Duck Hunt + World Class Track Meet (USA) (Rev 1).nes';
+        this.targetROM = 'game/nes/super marioNES/Super_Mario_Bros_Duck_Hunt_World_Class_Track_Meet.nes';
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
@@ -580,3 +580,4 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
