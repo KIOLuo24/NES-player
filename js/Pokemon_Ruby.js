@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/GBA/Pokemon_Ruby/Pokemon_Ruby';
+        this.targetROM = 'game/GBA/Pokemon_Ruby/Pokemon_Ruby.gba';
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
@@ -580,3 +580,4 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
