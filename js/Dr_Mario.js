@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/nes/Dr_Mario/Dr_Mario';
+        this.targetROM = 'game/nes/Dr_Mario/Dr_Mario.nes';
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
@@ -580,3 +580,4 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
