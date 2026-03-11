@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/GBA/Pokemon_FireRed_Version/Pokemon_FireRed_Version';
+        this.targetROM = 'game/GBA/Pokemon_FireRed_Version/Pokemon_FireRed_Version.gba';
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
@@ -580,4 +580,5 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
 
