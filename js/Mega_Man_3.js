@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/nes/Mega_Man_3/Mega_Man_3';
+        this.targetROM = 'game/nes/Mega_Man_3/Mega_Man_3.nes';
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
@@ -580,3 +580,4 @@ function resetGame() {
 async function autoLoadLocalGame() {
     console.log('autoLoadLocalGame 已弃用，使用新的初始化方式');
 }
+
