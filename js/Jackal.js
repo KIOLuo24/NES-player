@@ -6,7 +6,7 @@ class FCSuperMarioEmulator {
     constructor() {
         this.ejs = null;
         this.gameContainer = document.getElementById('gameContainer');
-        this.targetROM = 'game/nes/Jackal.nes;
+        this.targetROM = 'game/nes/Jackal/Jackal.nes;
         this.isRunning = false;
         this.isInitialized = false;
         this.audioContext = null;
